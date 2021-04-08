@@ -31,7 +31,6 @@ public class WeatherServiceImpl implements WeatherService {
             ciudad=gson.fromJson(consultarApi.getDataByCity(nombre),City.class);
             cache.guardarCiudad(nombre,ciudad);
         }else{
-            System.out.println("hola");
             ciudad=cache.obtenerCiudadPorNombre(nombre);
         }
         return ciudad;
