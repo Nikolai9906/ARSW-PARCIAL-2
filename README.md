@@ -50,8 +50,34 @@ AJUSTE LOS DIAGRAMAS DE ARQUITECTURA QUE SEAN NECESARIOS PARA REFLEJAR LAS DESIC
 5. Suba el zip del proyecto al aula con el nombre (APELLIDO-ARSW-T2).
 6. Guarde una copia de su proyecto.
 
-## *Integracion continua en CircleCi* :white_check_mark:
+## Integracion continua en CircleCi :white_check_mark:
 [![CircleCi](https://circleci.com/gh/Nikolai9906/ARSW-PARCIAL-2.svg?style=svg)](https://app.circleci.com/pipelines/github/Nikolai9906/ARSW-PARCIAL-2)
+
+
+## Evidencia
+### Get api weather - Backend
+
+![](img/img.png)
+
+````java
+@RestController
+@RequestMapping(value="/clima")
+public class WeatherController {
+    @Autowired
+    @Qualifier("WeatherService")
+    private WeatherService weatherService;
+
+    @RequestMapping (method = RequestMethod.GET,value = "/{city}")
+    public ResponseEntity<?> getCiudad(@PathVariable String city){
+        try{
+            return new ResponseEntity<>(weatherService.getCityByname(city), HttpStatus.ACCEPTED);
+        }catch (JsonSyntaxException | UnirestException e){
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+        }
+    }
+
+}
+``
 
 ## Criterios de evaluación:
 

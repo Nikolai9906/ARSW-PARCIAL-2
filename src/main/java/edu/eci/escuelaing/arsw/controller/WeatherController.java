@@ -16,10 +16,10 @@ public class WeatherController {
     @Qualifier("WeatherService")
     private WeatherService weatherService;
 
-    @RequestMapping (method = RequestMethod.GET,value = "/{nombreCiudad}")
-    public ResponseEntity<?> getCiudad(@PathVariable String nombreCiudad){
+    @RequestMapping (method = RequestMethod.GET,value = "/{city}")
+    public ResponseEntity<?> getCiudad(@PathVariable String city){
         try{
-            return new ResponseEntity<>(weatherService.getCityByname(nombreCiudad), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(weatherService.getCityByname(city), HttpStatus.ACCEPTED);
         }catch (JsonSyntaxException | UnirestException e){
             System.out.println(e.getMessage());
             return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
