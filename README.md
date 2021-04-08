@@ -53,13 +53,12 @@ AJUSTE LOS DIAGRAMAS DE ARQUITECTURA QUE SEAN NECESARIOS PARA REFLEJAR LAS DESIC
 ## Integracion continua en CircleCi :white_check_mark:
 [![CircleCi](https://circleci.com/gh/Nikolai9906/ARSW-PARCIAL-2.svg?style=svg)](https://app.circleci.com/pipelines/github/Nikolai9906/ARSW-PARCIAL-2)
 
-
 ## Evidencia
 ### Get api weather - Backend
 
 ![](img/img.png)
 
-````java
+```java
 @RestController
 @RequestMapping(value="/clima")
 public class WeatherController {
@@ -77,7 +76,7 @@ public class WeatherController {
     }
 
 }
-``
+```
 
 ## Criterios de evaluación:
 

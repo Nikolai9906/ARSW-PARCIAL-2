@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+    
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/apiclient.js"></script>
+
+    <title>Weather</title>
+    <style>
+        #map {
+            height: 850px;
+        }
+        </style>
+</head>
+<body onload="app.init()">
+<center>
+    <div style="font-family: 'Fjalla One', sans-serif;" class="container">
+        <div style = "width: 100%; text-align: center;" >
+            <h1 style = "color: #007bff;"> Api Weather - ARSW </h1>
+        </div>
+        <br>
+        <br>
+        <div style="float: left; width: 100%; height: 100%;" class="col-md-12">
+            <form class="form-inline">
+                <h4 style="color: #007bff"><label for="ciudad" id="ciudad">City</label></h4>
+                <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" class="form-control" id=dataCity placeholder="City">
+                </div>
+                <button type="button" class="btn btn-primary" id="boton" onclick="app.setCity(), app.getCityByName()" >Search</button>
+            </form>
+            <div id="map" class="col-md-12"></div>
+            <br>
+            <br>
+            <h2 style="align-self: center; color: #007bff">Information</h2>
+            <div class="container" id="infow" style="align-self: center">
+                <div class="row col-12">
+                    <div class="card mb-grid col-5 m-3">
+                        <div class="card-header text-center" style="background-color:#007bff">
+                            <h5 style="color: white"> General</h5>
+                        </div>
+                        <div class="row" id="p">
+                            <label style="color:#007bff" class="col-12" id=city></label>
+                            <label style="color:#007bff" class="col-12" id=id></label>
+                            <label style="color:#007bff" class="col-12" id=timezone></label>
+                            <label style="color:#007bff" class="col-12" id=dt></label>
+                            <label style="color:#007bff" class="col-12" id=clouds></label>
+                            <label style="color:#007bff" class="col-12" id=visibility></label>
+                            <label style="color:#007bff" class="col-12" id=base></label>
+                        </div>
+                    </div>
+                    <div class="card mb-grid col-5 m-3">
+                        <div class="card-header text-center" style="background-color:#007bff">
+                            <h5 style="color: white">Weather</h5>
+                        </div>
+                        <div class="row">
+                            <label style="color:#007bff" class="col-12" id=weatherId></label>
+                            <label style="color:#007bff" class="col-12" id=main></label>
+                            <label style="color:#007bff" class="col-12" id=descrp></label>
+                            <label style="color:#007bff" class="col-12" id=icon></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-12">
+                    <div class="card mb-grid col-5 m-3">
+                        <div class="card-header text-center" style="background-color:#007bff">
+                            <h5 style="color: white">Main</h5>
+                        </div>
+                        <div class="row">
+                            <label style="color:#007bff" class="col-12" id=temp></label>
+                            <label style="color:#007bff" class="col-12" id=feelsLike></label>
+                            <label style="color:#007bff" class="col-12" id=tempMin></label>
+                            <label style="color:#007bff" class="col-12" id=tempMax></label>
+                            <label style="color:#007bff" class="col-12" id=pressure></label>
+                            <label style="color:#007bff" class="col-12" id=humidity></label>
+                        </div>
+                    </div>
+                    <div class="card mb-grid col-5 m-3">
+                        <div class="card-header text-center" style="background-color:#007bff">
+                            <h5 style="color: white"> Wind</h5>
+                        </div>
+                        <div class="row">
+                            <label style="color:#007bff" class="col-12" id=speed></label>
+                            <label style="color:#007bff" class="col-12" id=deg></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-12">
+                    <div class="card mb-grid col-5 m-3">
+                        <div class="card-header text-center" style="background-color:#007bff">
+                            <h5 style="color: white">Sys</h5>
+                        </div>
+                        <div class="row">
+                            <label style="color:#007bff" class="col-12" id=type></label>
+                            <label style="color:#007bff" class="col-12" id=sysId></label>
+                            <label style="color:#007bff" class="col-12" id=country></label>
+                            <label style="color:#007bff" class="col-12" id=sunrise></label>
+                            <label style="color:#007bff" class="col-12" id=sunset></label>
+                        </div>
+                    </div>
+                    <div class="card mb-grid col-5 m-3">
+                        <div class="card-header text-center" style="background-color:#007bff">
+                            <h5 style="color: white">Coord</h5>
+                        </div>
+                        <div class="row">
+                            <label style="color:#007bff" class="col-12" id=lon></label>
+                            <label style="color:#007bff" class="col-12" id=lat></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</center>
+</body>
+</html>
