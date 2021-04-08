@@ -1,0 +1,9 @@
+edu.eci.escuelaing.arsw
+edu.eci.escuelaing.arsw.cache
+edu.eci.escuelaing.arsw.cache.impl
+edu.eci.escuelaing.arsw.controller
+edu.eci.escuelaing.arsw.httpConnection
+edu.eci.escuelaing.arsw.httpConnection.impl
+edu.eci.escuelaing.arsw.model
+edu.eci.escuelaing.arsw.service
+edu.eci.escuelaing.arsw.service.impl

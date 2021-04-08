@@ -58,6 +58,18 @@ AJUSTE LOS DIAGRAMAS DE ARQUITECTURA QUE SEAN NECESARIOS PARA REFLEJAR LAS DESIC
 
 ![](img/img.png)
 
+### Aplicacion desplegada en heroku 
+[Heroku Link](https://mysterious-inlet-92459.herokuapp.com)
+
+![](img/img_1.png)
+
+### Busqueda de la ciudad de Bogota - Mapa
+![](img/img_2.png)
+
+### Informacion de la ciudad Bogota - Informacion
+![](img/img_3.png)
+
+##  Weather Controller
 ```java
 @RestController
 @RequestMapping(value="/clima")
